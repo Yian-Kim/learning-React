@@ -1,3 +1,8 @@
+// 3.3.6 propTypes를 통한 props 검증
+
+/**
+ * MyComponent.js
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -20,3 +25,16 @@ MyComponent.PropTypes = {
 };
 
 export default MyComponent;
+
+ /**
+  * App.js
+  */
+ import React from 'react';
+ import MyComponent from './MyComponent';
+ 
+ const App = () => {
+     // return <MyComponent name={3}>리액트</MyComponent>;
+     return <MyComponent name="React">리액트</MyComponent>;
+ };
+ 
+ export default App;
