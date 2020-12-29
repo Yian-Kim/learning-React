@@ -1,3 +1,9 @@
+// 3.3.6.1 isRequired를 사용하여 필수 propTypes 설정
+// 3.3.6.2 더 많은 PropTypes 종류
+
+/**
+ * MyComponent.js
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -23,3 +29,19 @@ MyComponent.PropTypes = {
 };
 
 export default MyComponent;
+
+/**
+ * App.js
+ */
+import React from 'react';
+import MyComponent from './MyComponent';
+
+const App = () => {
+  return (
+    <MyComponent name="React" favoriteNumber={1}>
+      리액트
+    </MyComponent>;
+  );
+};
+
+export default App;
