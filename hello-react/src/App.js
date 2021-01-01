@@ -2,7 +2,7 @@ import React from 'react';
 import Say from './Say';
 
 const App = () => {
-    const <Say />;
+    return <Say />;
 };
 
 export default App;
