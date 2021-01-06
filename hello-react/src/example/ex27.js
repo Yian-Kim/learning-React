@@ -11,6 +11,7 @@ import React, { Component } from 'react';
 class EventPractice extends Component {
 
     state = {
+        username: '',
         message: ''
     }
 
@@ -23,13 +24,15 @@ class EventPractice extends Component {
 
     handleChange(e) {
         this.setState({
-            message: e.target.value
+            // 4.2.4 input 여러 개 다루기
+            [e.target.name]: e.target.value
         });
     }
 
     handleClick() {
-        alert(this.state.message);
+        alert(this.state.message + ': ' + this.state.message);
         this.setState({
+            username: '',
             message: ''
         });
     }
@@ -42,7 +45,7 @@ class EventPractice extends Component {
                 <input
                     type="text"
                     name="message"
-                    placeholder="아무거나 입력해 보세요"
+                    placeholder="사용자명"
                     // onChange={
                     //     (e) => {
                             // console.log(e.target.value);
@@ -57,14 +60,23 @@ class EventPractice extends Component {
                     onChange={this.handleChange}
                 />
                 {/* 4.2.2.3 버튼을 누를 때 comment 값을 공백으로 설정 */}
-                <button onClick={
+                {/* <button onClick={
                     () => {
                         alert(this.state.message);
                         this.setState({
                             message: ''
                         });
                     }
-                }>확인</button>
+                }>확인</button> */}
+                <input
+                    type="text"
+                    name="message"
+                    placeholder="아무거나 입력해 보세요"
+                    value={this.state.message}
+                    onChange={this.handleChange}
+                    onKeyPress={this.handleKeyPress}
+                />
+                <button onClick={this.handleClick}>확인</button>
             </div>
         );
     }
