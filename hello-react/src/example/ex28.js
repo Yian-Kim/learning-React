@@ -1,3 +1,4 @@
+// 4.3 함수형 컴포넌트로 구현해 보기
 import React, { useState } from 'react';
 
 const EventPractice = () => {
