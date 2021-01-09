@@ -51,3 +51,21 @@ class ValidationSample extends Component {
 }
 
 export default ValidationSample;
+
+// 5.1.2 App 컴포넌트에서 예제 컴포넌트 렌더링
+
+/**
+ * App.js
+ */
+import React, { Component } from 'react';
+import ValidationSample from './ValidationSample';
+
+class App extends Component {
+    render() {
+        return (
+            <ValidationSample/>
+        );
+    }
+}
+
+export default App;
