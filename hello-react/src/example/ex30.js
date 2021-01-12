@@ -61,7 +61,13 @@ import ScrollBox from './ScrollBox';
 class App extends Component {
     render() {
         return (
-            <ScrollBox/>
+            // 5.3.4 컴포넌트에 ref 달고 내부 메소드 사용
+            <div>
+                <ScrollBox ref={(ref) => this.scrollBox=ref}/>
+                <button onClick={() => this.scrollBox.scrollToBottom()}>
+                    맨 밑으로
+                </button>
+            </div>
         );
     }
 }
