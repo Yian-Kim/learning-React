@@ -22,7 +22,21 @@ const IterationSample = () => {
     const [nextId, setNextId] = useState(5); // 새로운 항목을 추가할 때 사용할 id
 
     const onChange = e => setInputText(e.target.value);
+    const onClick = () => {
+        const nextNames = names.concate({
+            id: nextId, // nextId 값을 id로 설정하고
+            text: inputText
+        });
+        setNextId(nextId + 1); // nextId 값에 1을 더해 준다.
+        setNames(nextNames); // names 값을 업데이트한다.
+        setInputText(''); // inputText를 비운다.
+    };
 
+    // 6.4.3 데이터 제거 기능 구현하기
+    const onRemove = id => {
+        const nextNames = names.filter(name => name.id != id);
+        setNames(nextNames);
+    };
     const nameList = names.map(name => <li key={name.id}>{name.text}</li>);
     // return <ul>{nameList}</ul>;
     // 6.4.2 데이터 추가 기능 구현하기
