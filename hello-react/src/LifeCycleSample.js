@@ -37,6 +37,7 @@ class LifeCycleSample extends Component {
 
         return (
             <div>
+                {this.props.missing.value}
                 <h1 style={style} ref={ref => this.myRef=ref}>
                     {this.state.number}
                 </h1>
@@ -45,7 +46,7 @@ class LifeCycleSample extends Component {
                     더하기
                 </button>
             </div>
-        )
+        );
     }
 }
 

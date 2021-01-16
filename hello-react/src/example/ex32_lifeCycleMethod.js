@@ -55,6 +55,7 @@ class LifeCycleSample extends Component {
 
         return (
             <div>
+                {this.psrops.missing.value}
                 <h1 style={style} ref={ref => this.myRef=ref}>
                     {this.state.number}
                 </h1>
@@ -75,6 +76,7 @@ export default LifeCycleSample;
  */
 import React, { Component } from 'react';
 import LifeCycleSample from './LifeCycleSample';
+import ErrorBoundary from './ErrorBoundary';
 
 // 랜덤 색상을 생성합니다.
 function getRandomColor() {
@@ -96,10 +98,36 @@ class App extends Component {
         return (
             <div>
                 <button onClick={this.handleClick}>랜덤 색상</button>
-                <LifeCycleSample color={this.state.color}/>
+                <ErrorBoundary>
+                    <LifeCycleSample color={this.state.color}/>
+                </ErrorBoundary>
             </div>
         );
     }
 }
 
 export default App;
+
+/**
+ * ErrorBoundary.js
+ * - 7.3.3 에러 잡아내기
+ */
+import React, { Component } from 'react';
+
+class ErrorBoundary extends Component {
+    state = {
+        error: false
+    };
+    componentDidCatch(error, info) {
+        this.setState({
+            error: true
+        });
+        console.log({ error, info });
+    }
+    render() {
+        if (this.state.error) return <div>에러가 발생했습니다!</div>
+        return this.props.children;
+    }
+}
+
+export default ErrorBoundary;
