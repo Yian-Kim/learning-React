@@ -3,7 +3,7 @@
 /**
  * Counter.js
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Counter = () => {
     const [value, setValue] = useState(0);
@@ -14,14 +14,14 @@ const Counter = () => {
                 현재 카운터 값은 <b>{value}</b>입니다.
             </p>
             <button onClick={() => setValue(value + 1)}>+1</button>
-            <button onClick={() => setValue(value - 1)}>-1</button>
-        </div>
+            <button                                                          onClick={() => setValue(value - 1)}>-1</button>
+        </div>                                   
     );
 };
 
 export default Counter;
 
-/**
+/**    
  * App.js
  */
 import React from 'react';
@@ -44,6 +44,26 @@ import React, { useState } from 'react';
 const Info = () => {
     const [name, setName] = useState('');
     const [nickname, setNickname] = useState('');
+    useEffect(() => {
+        // console.log('렌더링이 완료되었습니다!');
+        // console.log({
+        //     name,
+        //     nickname
+        // });
+        // 8.2.1 마운트될 때만 실행하고 싶을 때
+        // console.log('마운트될 때만 실행됩니다.');
+        // 8.2.2 특정 값이 업데이트될 때만 실행하고 싶을 때
+        // console.log(name);
+        // 8.2.3 뒷정리하기
+        return () => {
+            console.log('effect');
+            console.log(name);
+            return () => {
+                console.log('cleanup');
+                console.log(name);
+            };
+        };
+    }, [name]);
 
     const onChangeName = e => {
         setName(e.target.value);
