@@ -30,7 +30,21 @@ import Info from './Info';
 
 const App = () => {
 //   return <Counter />;
-    return <Info />;
+    // return <Info />;
+    // 8.2.3 뒷정리하기
+    return (
+        <div>
+          <button
+            onClick={() => {
+              setVisible(!visible);
+            }}
+          >
+            {visible ? '숨기기' : '보이기'}
+          </button>
+          <hr />
+          {visible && <Info />}
+        </div>
+      );
 };
 
 export default App;
@@ -63,7 +77,7 @@ const Info = () => {
                 console.log(name);
             };
         };
-    }, [name]);
+    }, []);
 
     const onChangeName = e => {
         setName(e.target.value);
