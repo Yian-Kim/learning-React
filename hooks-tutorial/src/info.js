@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+function renduer(state, action) {
+    return {
+        ...state,
+        [action.name]: action.value
+    };
+}
+
 const Info = () => {
     const [name, setName] = useState('');
     const [nickname, setNickname] = useState('');
