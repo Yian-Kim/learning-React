@@ -39,8 +39,8 @@ export default Counter;
  * App.js
  */
 import React from 'react';
-import Counter from './Counter';
-// import Info from './Info';
+// import Counter from './Counter';
+import Info from './Info';
 
 const App = () => {
 //   return <Counter />;
@@ -59,7 +59,9 @@ const App = () => {
     //       {visible && <Info />}
     //     </div>
     //   );
-    return <Counter />;
+    // return <Counter />;
+    // 8.3.2 인풋 상태 관리하기
+    return <Info />;
 };
 
 export default App;
@@ -68,12 +70,20 @@ export default App;
  * Info.js
  * - 8.1.1 useState를 여러 번 사용하기
  */
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React, { useReducer } from 'react';
+
+function reducer(state, action) {
+    return {
+        ...state,
+        [action.name]: action.value
+    };
+}
 
 const Info = () => {
-    const [name, setName] = useState('');
-    const [nickname, setNickname] = useState('');
-    useEffect(() => {
+    // const [name, setName] = useState('');
+    // const [nickname, setNickname] = useState('');
+    // useEffect(() => {
         // console.log('렌더링이 완료되었습니다!');
         // console.log({
         //     name,
@@ -84,22 +94,31 @@ const Info = () => {
         // 8.2.2 특정 값이 업데이트될 때만 실행하고 싶을 때
         // console.log(name);
         // 8.2.3 뒷정리하기
-        return () => {
-            console.log('effect');
-            console.log(name);
-            return () => {
-                console.log('cleanup');
-                console.log(name);
-            };
-        };
-    }, []);
+    //     return () => {
+    //         console.log('effect');
+    //         console.log(name);
+    //         return () => {
+    //             console.log('cleanup');
+    //             console.log(name);
+    //         };
+    //     };
+    // }, []);
 
-    const onChangeName = e => {
-        setName(e.target.value);
-    };
+    // const onChangeName = e => {
+    //     setName(e.target.value);
+    // };
 
-    const onChangeNickname = e => {
-        setNickname(e.target.value);
+    // const onChangeNickname = e => {
+    //     setNickname(e.target.value);
+    // };
+    // 8.3.2 인풋 상태 관리하기
+    const [state, dispatch] = useReducer(reducer, {
+        name: '',
+        nickname: ''
+    });
+    const { name, nickname } = state;
+    const onChange = e => {
+        dispatch(e.target);
     };
 
     return (

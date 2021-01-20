@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer } from 'react';
 
 function renduer(state, action) {
     return {
@@ -8,30 +8,20 @@ function renduer(state, action) {
 }
 
 const Info = () => {
-    const [name, setName] = useState('');
-    const [nickname, setNickname] = useState('');
-    useEffect(() => {
-        console.log('effect');
-        console.log(name);
-        return () => {
-            console.log('cleanup');
-            console.log(name);
-        };
-    }, []);
-
-    const onChangeName = e => {
-        setName(e.target.value);
-    };
-
-    const onChangeNickname = e => {
-        setNickname(e.target.value);
+    const [state, dispatch] = useReducer(reducer, {
+        name: '',
+        nickname: ''
+    });
+    const { name, nickName } = state;
+    const onChange = e => {
+        dispatch(e.target);
     };
 
     return (
         <div>
             <div>
-                <input value={name} onChange={onChangeName} />
-                <input value={nickname} onChange={onChangeNickname} />
+                <input name="name" value={name} onChange={onChange} />
+                <input name="nickname" value={nickname} onChange={onChange} />
             </div>
             <div>
                 <div>
