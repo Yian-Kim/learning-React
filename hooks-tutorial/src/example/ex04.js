@@ -1,4 +1,28 @@
-import React from 'react';
+// 8.7 커스텀 Hooks 만들기
+/**
+ * useInputs.js
+ */
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+    return {
+        ...state,
+        [action.name]: action.value
+    };
+}
+
+export default function useInputs(initalForm) {
+    const [state, dispatch] = useReducer(reducer, initialForm);
+    const onChange = e => {
+        dispatch(e.target);
+    };
+    return [state, onChange];
+}
+
+ /**
+  * Info.js
+  */
+ import React from 'react';
 import useInputs from './useInputs';
 
 const Info = () => {
