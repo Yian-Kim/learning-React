@@ -51,3 +51,10 @@ const Info = () => {
 };
 
 export default Info;
+
+/**
+ * 8.8 다른 Hooks
+ * 
+ * https://nikgraf.github.io/react-hooks
+ * https://github.com/rehooks/awesome-react-hooks
+ */
