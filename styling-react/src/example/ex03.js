@@ -1,3 +1,26 @@
+// 9.2.1 utils 함수 분리하기
+/**
+ * utils.scss
+ */
+// 변수 사용하기
+$red: #fa5252;
+$orange: #fd7e14;
+$yellow: #fcc419;
+$green: #40c057;
+$blue: #339af0;
+$indigo: #5c7cfa;
+$violet: #7950f2;
+
+// 믹스인 만들기(재사용되는 스타일 블록을 함수처럼 사용할 수 있음)
+@mixin square($size) {
+    $calculated: 32px * $size;
+    width: $calulated;
+    height: $calculated;
+}
+
+/**
+ * SassComponent.scss
+ */
 @import './styles/utils';
 .SassComponent {
     display: flex;
