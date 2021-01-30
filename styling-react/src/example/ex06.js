@@ -1,3 +1,7 @@
+// 9.4 styled-components
+/**
+ * StyledComponent.js
+ */
 import React from 'react';
 import styled, { css } from 'styled-component';
 
@@ -50,3 +54,21 @@ const StyledComponent = () => {
 };
 
 export default StyledComponent;
+
+/**
+ * App.js
+ */
+import React, { Component } from 'react';
+import StyledComponent from './StyledComponent';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <StyledComponent />
+      </div>
+    );
+  }
+}
+
+export default App;
