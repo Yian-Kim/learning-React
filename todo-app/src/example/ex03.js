@@ -6,7 +6,7 @@ import React from 'react';
 import {
     MdCheckBoxOutlineBlank,
     MdCheckBox,
-    MdRemovCircleOutline,
+    MdRemoveCircleOutline,
 } from 'react-icons/md';
 import './TodoListItem.scss';
 
@@ -18,7 +18,7 @@ const TodoListItem = () => {
                 <div className="text">할 일</div>
             </div>
             <div className="remove">
-                <MdRemovCircleOutline />
+                <MdRemoveCircleOutline />
             </div>
         </div>
     );
