@@ -1,3 +1,9 @@
+// 11.8 react-virtualized를 사용한 렌더링 최적화
+// 11.8.1 최적화 준비
+// 11.8.2 TodoList 수정
+/**
+ * TodoList.js
+ */
 import React, { useCallback } from 'react';
 import { List } from 'react-virtualized';
 import TodoListItem from './TodoListItem';
