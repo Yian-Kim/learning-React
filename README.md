@@ -1,6 +1,8 @@
 # React Study
 
-To study React.JS
+- To study React.JS
+- The goal is to code more than one line a day!
+- 2020.12.23 ~ing
 
 ### 📚 Reference Literature
 
