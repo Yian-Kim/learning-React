@@ -1,3 +1,9 @@
+// 12.1 immer를 설치하고 사용법 알아보기
+// 12.1.1 프로젝트 준비
+// 12.1.2 immer를 사용하지 않고 불변성 유지
+/**
+ * App.js
+ */
 import React, { useRef, useCallback, useState } from 'react';
 
 const App = () => {
