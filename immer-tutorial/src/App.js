@@ -10,17 +10,14 @@ const App = () => {
     });
 
     // input 수정을 위한 함수
-    const onChange = useCallback(
-        e => {
-            const { name, value } = e.target;
-            setForm({
-                produce(form, draft => {
-                  draft[name] = value;
-                })
-            });
-        },
-        [form]
-    );
+    const onChange = useCallback(e => {
+        const { name, value } = e.target;
+        setForm({
+            produce(draft => {
+                draft[name] = value;
+            })
+        );
+    }, []);
 
     // form 등록을 위한 함수
     const onSubmit = useCallback(
@@ -46,7 +43,7 @@ const App = () => {
             });
             nextId.current += 1;
         },
-        [data, form.name, form.username]
+        [form.name, form.username]
     );
 
     // 항목을 삭제하는 함수
@@ -59,7 +56,7 @@ const App = () => {
                 })
             );
         },
-        [data]
+        []
     );
 
     return (
