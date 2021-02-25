@@ -49,10 +49,10 @@ const App = () => {
     // 항목을 삭제하는 함수
     const onRemove = useCallback(
         id => {
-            setData({
+            setData({p
                 produce(draft => {
                   draft.array.splice(draft.array.findIndex(info => info.id === id), 1);
-                  
+            p      
                 })
             );
         },
