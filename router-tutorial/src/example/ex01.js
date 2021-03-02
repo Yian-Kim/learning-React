@@ -54,14 +54,14 @@ export default About;
  * App.js
  */
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import About from './About';
 import Home from './Home';
 
 function App() {
   return (
     <div>
-      <ul>
+      {/* <ul>
         <li>
           <Link to="/">홈</Link>
         </li>
@@ -69,12 +69,15 @@ function App() {
           <Link to="/about">소개</Link>
         </li>
       </ul>
-      <hr />
+      <hr /> */}
       <Route path="/" component={Home} exact={true} />
-      <Route path="/About" component={About} />
+      {/* <Route path="/About" component={About} /> */}
+      {/* 13.3 Route 하나에 여러 개의 path 설정하기 */}
+      {/* <Route path="/about" component={About} /> */}
+      {/* <Route path="/info" component={About} /> */}
+      <Route path={['/about', '/info']} component={About} />
     </div>
   );
-}
+};
 
 export default App;
-
