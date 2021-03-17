@@ -1,6 +1,6 @@
 // 14.2 axios로 API 호출해서 데이터 받아 오기
 /**
- * App.js
+ * App.jsp
  */
  import React, { useState } from 'react';
  import axios from 'axios';
