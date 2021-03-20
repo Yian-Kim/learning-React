@@ -64,9 +64,10 @@
  /**
   * NewsList.js
   */
-  import React from 'react';
+  import React, { useState, useEffect } from 'react';
   import styled from 'styled-components';
   import NewsItem from './NewsItem';
+  import axios from 'axios';
   
   const NewsListBlock = styled.div`
       box-sizing: border-box;
@@ -81,25 +82,59 @@
       }
   `;
   
-  const sampleArticle = {
-      title: '제목',
-      description: '내용',
-      url: 'https://google.com',
-      urlToImage: 'https://via.placeholder.com/160',
-  };
-  
+//   const sampleArticle = {
+//     title: '제목',
+//     description: '내용',
+//     url: 'https://google.com',
+//     urlToImage: 'https://via.placeholder.com/160',
+//   };
+
   const NewsList = () => {
+      const [articles, setArticles] = useState(null);
+      const [loading, setLoading] = useState(false);
+      
+      useEffect(() => {
+          // async를 사용하는 함수 따로 선언
+          const fetchData = async () => {
+              setLoading(true);
+              try {
+                  const response = await axios.get(
+                      'https://newsapi.org/v2/top-headlines?country=kr&apiKey=',
+                  );
+                  setArticles(reasponse.data.articles);
+              } catch (e) {
+                  console.log(e);
+              }
+              setLoading(false);
+          };
+          fetchData();
+      }, []);
+  
+      // 대기 중일 때
+      if (loading) {
+          return <NewsListBlock>대기 중...</NewsListBlock>;
+      }
+      // 아직 articles 값이 설정되지 않았을 때
+      if (!articles) {
+          return null;
+      }
+  
+      // articles 값이 유효할 때
       return (
           <NewsListBlock>
+              {/* <NewsItem article={sampleArticle} />
               <NewsItem article={sampleArticle} />
               <NewsItem article={sampleArticle} />
               <NewsItem article={sampleArticle} />
               <NewsItem article={sampleArticle} />
-              <NewsItem article={sampleArticle} />
-              <NewsItem article={sampleArticle} />
+              <NewsItem article={sampleArticle} */}
+              {/* // 14.5 데이터 연동하기 */}
+              {articles.map(article => (
+                  <NewsItem key={articles.url} article={article} />
+              ))}
           </NewsListBlock>
-      )
-  }
+      );
+  };
   
   export default NewsList;
 
