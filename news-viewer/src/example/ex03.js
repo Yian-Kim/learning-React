@@ -3,11 +3,6 @@
 /**
  * Categories.js
  */
-// 14.6 카테고리 기능 구현하기
-// 14.6.1 카테고리 선택 UI 만들기
-/**
- * Categories.js
- */
  import React from 'react';
  import styled, { css } from 'styled-components';
  
