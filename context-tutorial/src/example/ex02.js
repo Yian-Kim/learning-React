@@ -1,3 +1,8 @@
+// 15.3 동적 Context 사용하기
+// 15.3.1 Context 파일 수정하기
+/**
+ * contexts/color.js
+ */
 import Reaact, { createContext, useState } from 'react';
 
 const ColorContext = createContext({ 
