@@ -6,7 +6,7 @@ const App = () => {
   return (
     <ColorContext.Provider value={{ color: 'red' }}>
       <div>
-        <ColorBox
+        <ColorBox />
       </div>
     </ColorContext.Provider>
   );
