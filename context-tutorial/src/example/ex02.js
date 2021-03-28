@@ -41,11 +41,14 @@ export default ColorContext;
 import React from 'react';
 import ColorBox from './components/ColorBox';
 import { ColorProvider } from './contexts/color';
+import SelectColors from './components/SelectColors';
 
 const App = () => {
 return (
     <ColorProvider value={{ color: 'red' }}>
     <div>
+        {/* // 15.3.3 색상 선택 컴포넌트 만들기 */}
+        <SelectColors />
         <ColorBox />
     </div>
     </ColorProvider>

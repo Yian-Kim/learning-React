@@ -1,4 +1,5 @@
 import React from 'react';
+import { ColorConsumer } from '../contexts/color';
 
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']l
 
@@ -6,6 +7,7 @@ const SelectColors = () => {
     return (
         <div>
             <h2>색상을 선택하세요.</h2>
+            <ColorConsumer>
             <div style={{ display: 'flex' }}>
                 {colors.map(color => (
                     <div
