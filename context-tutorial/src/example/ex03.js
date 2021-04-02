@@ -79,3 +79,12 @@ class SelectColors extends Component {
 }
 
 export default SelectColors;
+
+/**
+ * index.js
+ * - 16.2.3 DOM 레퍼런스 만들기
+ */
+const divToggle = document.querySelector('.toggle');
+const counter = document.querySelector('h1');
+const btnIncrease = document.querySelector('#increase');
+const btnDecrease = document.querySelector('#decrease');
