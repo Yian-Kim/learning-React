@@ -1,3 +1,35 @@
+// 17.6 리덕스 더 편하게 사용하기
+// 17.6.1 redux-actions
+// 17.6.1.1 counter 모듈에 적용하기
+/**
+ * modules/counter.js
+ */
+import { createAction, handleActions } from 'redux-actions';
+
+const INCREASE = 'counter/INCREASE';
+const DECREASE = 'counter/DECREASE';
+
+export const increase = createAction(INCREASE);
+export const decrease = createAction(DECREASE);
+
+const initialState = {
+    number: 0
+};
+
+function counter = handleActions(
+    {
+        [INCREASE]: (state, action) => ({ number: state.number + 1}),
+        [DECREASE]: (state, action) => ({ number: state.number - 1}),
+    },
+    initialState,
+);
+
+export default counter;
+
+// 17.6.1.2 todos 모듈에 적용하기
+/**
+ * modules/todos.js
+ */
 import { createAction, handleActions } from 'redux-actions';
 
 const CHANGE_INPUT = 'todos/CHANGE_INPUT'; // 인풋값을 변경함
