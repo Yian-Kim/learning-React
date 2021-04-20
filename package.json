@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "immer": "^9.0.1",
     "qs": "^6.9.6"
   }
 }
