@@ -31,6 +31,7 @@ export default counter;
  * modules/todos.js
  */
 import { createAction, handleActions } from 'redux-actions';
+import produce from 'immer';
 
 const CHANGE_INPUT = 'todos/CHANGE_INPUT'; // 인풋값을 변경함
 const INSERT = 'todos/INSERT'; // 새로운 todo를 등록함
@@ -97,20 +98,23 @@ function todos(state = initialState, action) {
 
 const todos = handleActions(
     {
-        [CHANGE_INPUT]: (state, action) => ({ ...state, input: action.payload }),
-        [INSERT]: (state, action) => ({
-            ...state,
-            todos: state.todos.concat(action.payload),
+        [CHANGE_INPUT]: (state, { payload: input }) => 
+        produce(state, draft => {
+            draft.input = input;
         }),
-        [TOGGLE]: (state, action) => ({
-            ...state,
-            todos: state.todos.map(todo =>
-                todo.id = = = action.payload ? { ...todo, done: !todo.done } : todo,
-            ),
+        [INSERT]: (state, { payload: todo }) => 
+        produce(state, draft => {
+            draft.todos.push(todo);
         }),
-        [REMOVE]: (steate, action) => ({
-            ...state,
-            todos: state.todos.filter(todo => todo.id != = action.payload),
+        [TOGGLE]: (state, { payload: id }) =>
+        produce(state, draft => {
+            const todo = draft.todos.find(todo => todo.id = = = id);
+            todo.done = !todo.done;
+        }),
+        [REMOVE]: (steate, { payload: id }) =>
+        produce(state, draft => {
+            const index = draft.todos.findIndex(todo => todo.id = = = id);
+            draft.todos.splice(index, 1);
         }),
     },
     initialState,
