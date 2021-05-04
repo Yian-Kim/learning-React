@@ -1,8 +1,17 @@
-import { combineReducers } from 'redux';
-import counter from './counter';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import './index.css';
+import App from './App';
+improt rootReducer from './modules';
+import loggerMiddleware from './lib/loggerMiddleware';
 
-const rootReducer = combineReducers({
-    counter
-});
+const store = createStore(rootReducer, applyMiddleware(loggerMiddleware));
 
-export default rootReducer;
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementsById('root')
+);
