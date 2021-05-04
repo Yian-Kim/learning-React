@@ -4,6 +4,7 @@
     "qs": "^6.9.6",
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
-    "redux-actions": "^2.6.5"
+    "redux-actions": "^2.6.5",
+    "redux-logger": "^3.0.6"
   }
 }
