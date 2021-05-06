@@ -49,7 +49,7 @@ export const increase = createAction(INCREASE);
 export const decrease = createAction(DECREASE);
 
 // 1초 뒤에 increase 혹은 decrease 함수를 디스패치함
-export const increaseAsyncd = () => dispatch => {
+export const increaseAsync = () => dispatch => {
     setTimeout(() => {
         dispatch(increase());
     }, 1000);
@@ -71,3 +71,31 @@ function counter = handleActions(
 );
 
 export default counter;
+
+/**
+ * container/CounterContainer.js
+ */
+import React from 'react';
+import { connect } from 'react-redux';
+import { increaseAsync, decreaseAsync } from '../modules/counter';
+import Counter from '../components/Counter';
+
+const CounterContainer = ({ number, increaseAsync, decreaseAsync }) => {
+    return (
+        <Counter
+            number={number}
+            onIncrease={increaseAsync}
+            onDecrease={decreaseAsync}
+        />
+    );
+};
+
+export default connect(
+    state => ({
+        number: state.counter
+    }),
+    {
+        increaseAsync,
+        decreaseAsync
+    }
+)(CounterContainer);
