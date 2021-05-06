@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^0.21.1",
     "immer": "^9.0.1",
     "qs": "^6.9.6",
     "react-redux": "^7.2.4",
