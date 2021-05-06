@@ -37,6 +37,7 @@ ReactDOM.render(
 document.getElementsById('root')
 );
 
+// 18.3.1.3 Thunk 생성 함수 만들기
 /**
  * modules/counter.js
  */
@@ -99,3 +100,15 @@ export default connect(
         decreaseAsync
     }
 )(CounterContainer);
+
+// 18.3.1.4 웹 요청 비동기 작업 처리하기
+/**
+ * lib/api.js
+ */
+import axios from 'axios';
+
+export const getPost = id =>
+    axios.get('https://jsonplaceholder.typicode.com/posts/${id}');
+
+export const getUsers = id =>
+    axios.get('https://jsonplaceholder.typicode.com/users');
