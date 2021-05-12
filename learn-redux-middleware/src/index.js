@@ -12,7 +12,7 @@ import createSagaMiddleware from 'redux-saga';
 
 const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
-const stroe = createStore(
+const store = createStore(
   rootReducer, 
   applyMiddleware(logger, ReduxThunk, sagaMiddleware)
 );
